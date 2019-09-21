@@ -1,13 +1,21 @@
-import react from "react"
+
+import React from "react";
+// import React, { Component }  from 'react';
+
+import "./style.css";
+
+// Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Jumbotron() {
-    render(
+    return (
         <div>
-            <div className="jumbotron jumbotron-fluid">
+            <div className="jumbotron jumbotron-fluid jumboBox">
                 <div className="container">
-                    <h1 className="display-4">Fluid jumbotron</h1>
-                    <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                    <h1 className="display-4 gbooks">Google Books Search</h1>
+                    <input class="form-control" type="text" placeholder="Search books" readonly />
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
+export default Jumbotron;
