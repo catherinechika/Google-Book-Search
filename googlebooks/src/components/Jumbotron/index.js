@@ -1,7 +1,6 @@
 
 import React from "react";
 // import React, { Component }  from 'react';
-
 import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -11,7 +10,6 @@ function Jumbotron() {
             <div className="jumbotron jumbotron-fluid jumboBox">
                 <div className="container">
                     <h1 className="display-4 gbooks">Google Books Search</h1>
-                    <input class="form-control" type="text" placeholder="Search books" readonly />
                 </div>
             </div>
         </div>
