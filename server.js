@@ -7,11 +7,15 @@ var db = require("./models");
 
 const PORT = process.env.PORT || 8080;
 
+mongoose.connect('mongodb://localhost:27017/bookSearch', { useUnifiedTopology: true, useNewUrlParser: true })
+
 // app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("src"));
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("googlebooks/build"));
+}
 
 app.get("/api/books", function (req, res) {
   db.Book
@@ -36,10 +40,11 @@ app.post("/api/books", function (req, res) {
     });
 });
 
-
-
-mongoose.connect('mongodb://localhost:27017/bookSearch', { useUnifiedTopology: true, useNewUrlParser: true })
-
+if (process.env.NODE_ENV === "production") {
+  app.get("*", function (req, res) {
+    res.sendFile(__dirname + "/googlebooks/build/index.html");
+  });
+}
 
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
