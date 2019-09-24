@@ -7,7 +7,7 @@ var db = require("./models");
 
 const PORT = process.env.PORT || 8080;
 
-mongoose.connect('mongodb://localhost:27017/bookSearch', { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bookSearch', { useUnifiedTopology: true, useNewUrlParser: true })
 
 // app.use(routes);
 app.use(express.urlencoded({ extended: true }));
