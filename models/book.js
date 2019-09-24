@@ -13,15 +13,12 @@ var bookSearch = new mongoose.Schema({
   },
   authors: {
     type: String,
-    required: true
   },
   description: {
     type: String,
-    required: true
   },
   infoLink: {
     type: String,
-    required: true
   }
 });
 

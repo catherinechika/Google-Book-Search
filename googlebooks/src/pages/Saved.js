@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import SavedDisplay from "../components/SavedDisplay";
 import Jumbotron from "../components/Jumbotron";
-import API from "../components/utils/API";
+import axios from 'axios'
 
 
 class Saved extends Component {
     state = {
         search: "",
-        result: []
+        results: []
     }
 
     handleInputChange = event => {
@@ -18,25 +18,21 @@ class Saved extends Component {
         console.log(event.target.value)
 
     }
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-        API.search('The Alchemist')
-            .then(res => this.setState({ result: res.data.items }))
+    componentDidMount() {
+        axios
+            .get('/api/books')
+            .then(res => this.setState({ results: res.data }))
             .catch(err => console.log(err));
+    }
 
-    };
+
     render() {
         return (
             <div>
 
-                <Jumbotron
-                    handleInputChange={this.handleInputChange}
-                    search={this.state.search}
-                    handleFormSubmit={this.handleFormSubmit}
-                />
+                <Jumbotron />
                 <SavedDisplay
-                    result={this.state.result} />
+                    results={this.state.results} />
 
             </div>
         );

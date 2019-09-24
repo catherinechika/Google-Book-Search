@@ -8,7 +8,7 @@ import axios from 'axios'
 class Search extends Component {
     state = {
         search: "",
-        result: []
+        results: []
     }
 
     handleInputChange = event => {
@@ -22,28 +22,27 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        API.search('The Alchemist')
-            .then(res => this.setState({ result: res.data.items }))
+        API.search(this.state.search)
+            .then(res => this.setState({ results: res.data.items }))
             .catch(err => console.log(err));
 
     };
     handleSave = event => {
         event.preventDefault();
         console.log('saved')
-        axios.post('/api/saved', this.state.result)
+        axios.post('/api/saved', this.state.results)
     };
+
     render() {
         return (
             <div>
-
                 <SearchJumbotron
                     handleInputChange={this.handleInputChange}
                     search={this.state.search}
                     handleFormSubmit={this.handleFormSubmit}
                 />
                 <Display
-                    key={this.state.result.id}
-                    result={this.state.result}
+                    results={this.state.results}
                     handleSave={this.handleSave} />
 
             </div>

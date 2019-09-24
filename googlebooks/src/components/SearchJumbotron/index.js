@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom"
 import "./style.css";
 
@@ -24,7 +24,7 @@ function SearchJumbotron(props) {
                                 className="btn btn-primary mt-3">
                                 Search
         </button>
-                           
+
                         </div>
                     </form>
                     <Link to="/saved" className="btn btn-secondary btn-lg active savedBtn" role="button" aria-pressed="true">View Saved Books</Link>
