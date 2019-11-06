@@ -11,7 +11,7 @@ class Saved extends Component {
     }
 
     handleInputChange = event => {
-        event.preventDefault()
+        event.preventDefault() 
         this.setState({
             search: event.target.value
         })

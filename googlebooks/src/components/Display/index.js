@@ -25,7 +25,7 @@ function Display(props) {
                             infoLink: result.volumeInfo.infoLink
 
                         })
-                    }} className="btn btn-outline-dark">Save</button>
+                    }} className="btn btn-outline-dark">Save</button>   
                 </div>
             ))}
 
