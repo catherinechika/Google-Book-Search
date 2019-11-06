@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SavedDisplay from "../components/SavedDisplay";
 import Jumbotron from "../components/Jumbotron";
-import axios from 'axios'
 
 
 class Saved extends Component {

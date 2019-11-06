@@ -19,11 +19,12 @@ if (process.env.NODE_ENV === "production") {
 
 app.delete("/api/books/:id", function (req, res) {
   db.Book
-  .findById({ _id: req.params.id })
-  .then(dbModel => dbModel.remove())
-  .then(dbModel => res.json(dbModel))
-  .catch(err => res.status(422).json(err));
+    .findById({ id: req.params.id })
+    .then(dbModel => dbModel.remove(id))
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
 })
+
 app.get("/api/books", function (req, res) {
   db.Book
     .find({})

@@ -22,8 +22,6 @@ class SavedDisplay extends Component {
     deleteBook = id => {
         axios
         .delete(`/api/books/${id}`)
-
-
     }
 
 
