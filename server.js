@@ -17,15 +17,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("googlebooks/build"));
 }
 
-app.delete("/api/books", function (req, res) {
+app.delete("/api/books/:id", function (req, res) {
   db.Book
-    .remove({})
-    .then(function (found) {
-      res.json(found)
-    })
-    .catch(function (err) {
-      res.status(500).json(err);
-    });
+  .findById({ _id: req.params.id })
+  .then(dbModel => dbModel.remove())
+  .then(dbModel => res.json(dbModel))
+  .catch(err => res.status(422).json(err));
 })
 app.get("/api/books", function (req, res) {
   db.Book
